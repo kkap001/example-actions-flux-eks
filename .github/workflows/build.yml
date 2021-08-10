@@ -56,8 +56,8 @@ jobs:
         IMAGE_TAG: ${{ steps.tag-number.outputs.tag }}
       run: |
         docker build -t demo ./app
-        docker tag demo:latest docker tag example-eks:latest 228431726353.dkr.ecr.ap-south-1.amazonaws.com/example-eks:latest
-        docker push docker tag example-eks:latest 228431726353.dkr.ecr.ap-south-1.amazonaws.com/example-eks:latest
+        docker tag demo:latest 228431726353.dkr.ecr.ap-south-1.amazonaws.com/example-eks:latest
+        docker push 228431726353.dkr.ecr.ap-south-1.amazonaws.com/example-eks:latest
     # Only push to registry on master
     - name: Push
       if: github.ref == 'refs/heads/master'
