@@ -47,8 +47,8 @@ jobs:
         IMAGE_TAG: ${{ steps.tag-number.outputs.tag }}
       run: |
         docker build -t demo ./app
-        docker tag demo:latest $ECR_REGISTRY/$ECR_REPOSITORY:v1
-        docker push $ECR_REGISTRY/$ECR_REPOSITORY:v1
+        docker tag demo:latest $ECR_REGISTRY/$ECR_REPOSITORY:$IMAGE_TAG
+        docker push $ECR_REGISTRY/$ECR_REPOSITORY:$IMAGE_TAG
     # Only push to registry on master
     - name: Push
       if: github.ref == 'refs/heads/master'
