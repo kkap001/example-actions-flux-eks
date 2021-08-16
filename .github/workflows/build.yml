@@ -58,6 +58,8 @@ jobs:
         docker build -t demo ./app
         docker tag demo:latest 228431726353.dkr.ecr.ap-south-1.amazonaws.com/example-eks:latest
         docker push 228431726353.dkr.ecr.ap-south-1.amazonaws.com/example-eks:latest
+	      touch  results
+        aws s3 cp ./results/ s3://test29876/results/ --recursive
     # Only push to registry on master
     - name: Push
       if: github.ref == 'refs/heads/master'
