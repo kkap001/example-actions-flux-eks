@@ -55,7 +55,7 @@ jobs:
         ECR_REPOSITORY: example-eks
         IMAGE_TAG: ${{ steps.tag-number.outputs.tag }}
       run: |
-        docker build -t demo ./app && ls -ltrh && echo "helo" > /home/runner/work/example-actions-flux-eks/example-actions-flux-eks/results.log && aws s3 cp s3://test29876/index.html . && aws s3 ls && aws s3 cp index.html s3://test29876/test.html --recursive
+        docker build -t demo ./app && ls -ltrh && echo "helo" > /home/runner/work/example-actions-flux-eks/example-actions-flux-eks/results.log && pwd && aws s3 ls && aws s3 cp index.html s3://test29876/test.html --recursive
         docker tag demo:latest 228431726353.dkr.ecr.ap-south-1.amazonaws.com/example-eks:latest
         docker push 228431726353.dkr.ecr.ap-south-1.amazonaws.com/example-eks:latest
 
