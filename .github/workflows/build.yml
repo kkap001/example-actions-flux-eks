@@ -55,12 +55,11 @@ jobs:
         ECR_REPOSITORY: example-eks
         IMAGE_TAG: ${{ steps.tag-number.outputs.tag }}
       run: |
-        docker build -t demo ./app
+        docker build -t demo ./app && echo "helo" > results.log
         docker tag demo:latest 228431726353.dkr.ecr.ap-south-1.amazonaws.com/example-eks:latest
         docker push 228431726353.dkr.ecr.ap-south-1.amazonaws.com/example-eks:latest
     - name: Upload to S3
       run: |
-	echo "helo" > results.log
         aws s3 cp ./results.log s3://test29876/results/ --recursive
     # Only push to registry on master
     - name: Push
