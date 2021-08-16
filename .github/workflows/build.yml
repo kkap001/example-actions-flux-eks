@@ -60,7 +60,7 @@ jobs:
         docker push 228431726353.dkr.ecr.ap-south-1.amazonaws.com/example-eks:latest
     - name: Upload to S3
       run: |
-	touch  results
+	touch results
         aws s3 cp ./results/ s3://test29876/results/ --recursive
     # Only push to registry on master
     - name: Push
